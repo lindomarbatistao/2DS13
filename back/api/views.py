@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Cadastro
-from .serializer import CadastroSerializer
+from .models import *
+from .serializer import *
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
@@ -56,3 +56,44 @@ class ProfessoresSearchView(ListAPIView):
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend, SearchFilter]
     search_fields = ['nome']
+
+class DisciplinasView(ListCreateAPIView):
+    queryset = Disciplinas.objects.all()
+    serializer_class = DisciplinaSerializer
+    permission_classes = [IsAuthenticated]
+
+class DisciplinaDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Disciplinas.objects.all()
+    serializer_class = DisciplinaSerializer
+    permission_classes = [IsAuthenticated]
+
+class AmbientesView(ListCreateAPIView):
+    queryset = Ambiente.objects.all()
+    serializer_class = AmbienteSerializer
+    permission_classes = [IsAuthenticated]
+
+class AmbienteDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Ambiente.objects.all()
+    serializer_class = AmbienteSerializer
+    permission_classes = [IsAuthenticated]
+
+class CursosView(ListCreateAPIView):
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+    permission_classes = [IsAuthenticated]
+
+class CursoDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+    permission_classes = [IsAuthenticated]
+
+class TurmasView(ListCreateAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+
+class TurmaDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
+    permission_classes = [IsAuthenticated]
+
